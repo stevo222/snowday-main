@@ -10,13 +10,13 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     [SerializeField] private float _fireRate = 0.5f;
     [SerializeField] private float _canFire = -1f;
-    [SerializeField] private int _lives = 3;
-    //private Animator playerAnim;
+    [SerializeField] private int _lives = 4;
+    [SerializeField] private Animator playerAnim;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-       // playerAnim = GetComponent<Animator>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             _canFire = Time.time + _fireRate;
             Instantiate(projectilePrefab, transform.position + new Vector3(0.12f, 0, 0), Quaternion.identity);
-           // playerAnim.SetTrigger("fireGun");
+            playerAnim.SetTrigger("fireGun");
         }
 
     }

@@ -6,21 +6,26 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemies;
     public GameObject powerup;
+    public GameObject[] snowflake;
 
     private float zEnemySpawn = 12.0f;
     private float xSpawnRange = 15.0f;
     private float zPowerupRange = 6.0f;
     private float ySpawn = 1.0f;
+    private float yspwanFlake = 10.0f;
+   // private float zspawnFlake = 20.0f;
 
     private float powerupSpawnTime = 5.0f;
     private float enemySpawnTime = 2.0f;
     private float startDelay = 1.0f;
+    private float spawnFlakeTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+        InvokeRepeating("SpawnSnowFlake", startDelay,spawnFlakeTime);
     }
 
     // Update is called once per frame
@@ -45,5 +50,14 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPos = new Vector3(randomx, ySpawn, randomz);
         Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
+    }
+
+    void SpawnSnowFlake()
+    {
+        float randomx = Random.Range(-xSpawnRange, xSpawnRange);
+        int randomIndex = Random.Range(0, enemies.Length);
+
+        Vector3 spawnPos = new Vector3(randomx, yspwanFlake, zEnemySpawn);
+        Instantiate(snowflake[randomIndex], spawnPos, snowflake[randomIndex].gameObject.transform.rotation);
     }
 }
