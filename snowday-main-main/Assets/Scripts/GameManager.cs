@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     private int score;
@@ -14,7 +15,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public bool isGameActive;
     public Button restartButton;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateScore (int scoreToAdd)
+    public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
@@ -41,13 +41,12 @@ public class GameManager : MonoBehaviour
         lives = 4;
         //UpdateLives(4);
     }
-
     //public void UpdateLives (int _lives)
-   // {
-        //lives + _lives;
-       // livesText.text = "Lives: " + lives;
-        
-   // }
+    // {
+    //lives + _lives;
+    // livesText.text = "Lives: " + lives;
+
+    // }
 
     public void GameOver()
     {
@@ -60,4 +59,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }
