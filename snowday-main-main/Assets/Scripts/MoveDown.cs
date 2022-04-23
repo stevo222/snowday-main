@@ -7,16 +7,15 @@ public class MoveDown : MonoBehaviour
     public float speed = 5.0f;
     private float zDestroy = -12.0f;
     private Rigidbody objectRB;
-    public ParticleSystem fireParticle;
-    private Animator fireAnim;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
 
         objectRB = GetComponent<Rigidbody>();
-        fireAnim = GetComponent<Animator>();
-        fireParticle.Play();
+        
 
     }
 
