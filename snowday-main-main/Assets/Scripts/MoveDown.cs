@@ -7,7 +7,8 @@ public class MoveDown : MonoBehaviour
     public float speed = 5.0f;
     private float zDestroy = -12.0f;
     private Rigidbody objectRB;
-    
+    private GameManager gameManager;
+    public int pointValue;
     
 
     // Start is called before the first frame update
@@ -15,7 +16,8 @@ public class MoveDown : MonoBehaviour
     {
 
         objectRB = GetComponent<Rigidbody>();
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
 
     }
 
@@ -29,6 +31,7 @@ public class MoveDown : MonoBehaviour
         if (transform.position.z < zDestroy)
         {
             Destroy(gameObject);
+            gameManager.UpdateScore(pointValue);
         }
 
     }

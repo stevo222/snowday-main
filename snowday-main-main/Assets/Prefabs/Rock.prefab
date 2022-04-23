@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  fireParticle: {fileID: 19860484, guid: ad172d93b9fe7ef4182855db22df869b, type: 3}
+  pointValue: 5
 --- !u!65 &-7256765642890687572
 BoxCollider:
   m_ObjectHideFlags: 0
