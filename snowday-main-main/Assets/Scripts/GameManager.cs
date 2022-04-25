@@ -33,20 +33,13 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    public void StartGame()
-    {
-        isGameActive = true;
-        score = 0;
-        UpdateScore(0);
-        lives = 4;
-        //UpdateLives(4);
-    }
+   
     //public void UpdateLives (int _lives)
     // {
-    //lives + _lives;
-    // livesText.text = "Lives: " + lives;
+   // lives + _lives;
+     //livesText.text = "Lives: " + lives;
 
-    // }
+     //}
 
     public void GameOver()
     {
@@ -58,6 +51,15 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+        score = 0;
+        UpdateScore(0);
+        lives = 4;
+        //UpdateLives(4);
     }
 
 }

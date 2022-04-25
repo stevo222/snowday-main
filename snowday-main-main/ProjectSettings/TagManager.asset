@@ -9,6 +9,7 @@ TagManager:
   - Fire
   - Water
   - flake
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnSnowFlake()
     {
         float randomx = Random.Range(-xSpawnRange, xSpawnRange);
-        int randomIndex = Random.Range(0, enemies.Length);
+        int randomIndex = Random.Range(0, snowflake.Length);
 
         Vector3 spawnPos = new Vector3(randomx, yspwanFlake, zEnemySpawn);
         Instantiate(snowflake[randomIndex], spawnPos, snowflake[randomIndex].gameObject.transform.rotation);

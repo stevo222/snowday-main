@@ -10,7 +10,7 @@ public class MoveDown : MonoBehaviour
     private GameManager gameManager;
     public int pointValue;
     public int ExtraLife;
-    public PlayerController playerControllerScript;
+   // public PlayerController playerControllerScript;
 
 
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class MoveDown : MonoBehaviour
 
         objectRB = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        //playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
 
 
     }
@@ -35,9 +36,15 @@ public class MoveDown : MonoBehaviour
             Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
         }
-        //else
+       // else
        // {
-            //playerControllerScript.lives += 1;
-        //}
+          //  playerControllerScript.lives += 1;
+      //  }
+    }
+
+    private void OnTriggerEnter (Collider other)
+    {
+        //Destroy(gameObject);
+        Destroy(other.gameObject);
     }
 }

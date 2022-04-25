@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,11 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _canFire = -1f;
     [SerializeField] private int _lives = 4;
     [SerializeField] private Animator playerAnim;
+    public UnityEvent fireEvent;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,9 +28,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
+            fireEvent.Invoke();
             _canFire = Time.time + _fireRate;
             Instantiate(projectilePrefab, transform.position + new Vector3(0.12f, 0, 0), Quaternion.identity);
-            playerAnim.SetTrigger("fireGun");
         }
 
     }
@@ -61,6 +62,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Damage();
+        }
         if (collision.gameObject.CompareTag("Fire"))
         {
             Debug.Log("Player has collided with fire");
@@ -69,6 +74,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Damage();
+        }
         if (other.gameObject.CompareTag("Snowflake"))
         {
             Destroy(other.gameObject);
