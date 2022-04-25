@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,10 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _canFire = -1f;
     [SerializeField] private int _lives = 4;
     [SerializeField] private Animator playerAnim;
+    public TextMeshProUGUI livesText;
     public UnityEvent fireEvent;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         playerRb = GetComponent<Rigidbody>();
     }
 
@@ -35,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+   
     // moves the player 
     void MovePlayer()
     {
@@ -60,6 +67,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void UpdateLives(int showlives)
+    {
+        _lives += showlives;
+        livesText.text = "Lives: " + _lives;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -80,6 +93,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Snowflake"))
         {
+            _lives++;
             Destroy(other.gameObject);
         }
     }
@@ -90,7 +104,10 @@ public class PlayerController : MonoBehaviour
         if (_lives < 1)
         {
             Destroy(this.gameObject);
+            gameManager.GameOver();
+           
         }
+       
     }
 
 }
