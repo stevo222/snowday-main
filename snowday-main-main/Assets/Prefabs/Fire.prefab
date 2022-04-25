@@ -4853,10 +4853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27df23437b4a8fd4780acdc044e552ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13
+  speed: 10
   pointValue: 10
   ExtraLife: 0
-  playerControllerScript: {fileID: 0}
 --- !u!54 &2774032667358973248
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class MoveDown : MonoBehaviour
         if (transform.position.z < zDestroy)
         {
             Destroy(gameObject);
-            gameManager.UpdateScore(pointValue);
+            
         }
        // else
        // {
@@ -44,7 +44,12 @@ public class MoveDown : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        //Destroy(gameObject);
-        Destroy(other.gameObject);
+        Destroy(gameObject);
+        gameManager.UpdateScore(pointValue);
+        //Destroy(other.gameObject);
+       
+       
     }
+
+  
 }

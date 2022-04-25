@@ -112,7 +112,6 @@ MonoBehaviour:
   speed: 5
   pointValue: 0
   ExtraLife: 1
-  playerControllerScript: {fileID: 0}
 --- !u!54 &5938585005653584429
 Rigidbody:
   m_ObjectHideFlags: 0

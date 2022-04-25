@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int score;
-    private int lives;
+    public int score;
+    public int lives;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI gameOverText;
