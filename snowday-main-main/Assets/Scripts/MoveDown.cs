@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MoveDown : MonoBehaviour
 {
@@ -11,15 +15,20 @@ public class MoveDown : MonoBehaviour
     public int pointValue;
     public int ExtraLife;
     public GameObject explosionFx;
-   // public PlayerController playerControllerScript;
+    private AudioSource enemyAudio;
+    public AudioClip explosionAudio;
+
+    // public PlayerController playerControllerScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        objectRB = GetComponent<Rigidbody>();
+        
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        objectRB = GetComponent<Rigidbody>();
+        enemyAudio = GetComponent<AudioSource>();
         //playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
 
 
@@ -36,12 +45,8 @@ public class MoveDown : MonoBehaviour
         {
             Destroy(gameObject);
             
-            
+
         }
-       // else
-       // {
-          //  playerControllerScript.lives += 1;
-      //  }
     }
 
     private void OnTriggerEnter (Collider other)
@@ -49,14 +54,18 @@ public class MoveDown : MonoBehaviour
         Destroy(gameObject);
         Explode();
         gameManager.UpdateScore(pointValue);
+        
         //Destroy(other.gameObject);
-       
-       
+
+
     }
 
     void Explode()
     {
+        
         Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
+        enemyAudio.PlayOneShot(explosionAudio, 1.0f);
+
     }
 
 

@@ -19,11 +19,17 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI livesText;
     public UnityEvent fireEvent;
     private GameManager gameManager;
+    public AudioClip firelaser;
+    public AudioClip explodeSound;
+    private AudioSource playerAudio;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         playerRb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour
             fireEvent.Invoke();
             _canFire = Time.time + _fireRate;
             Instantiate(projectilePrefab, transform.position + new Vector3(0.12f, 0, 0), Quaternion.identity);
+            playerAudio.PlayOneShot(firelaser, 1.0f);
         }
 
     }
@@ -78,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Damage();
+           
         }
         if (collision.gameObject.CompareTag("Fire"))
         {
@@ -90,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Damage();
+            playerAudio.PlayOneShot(explodeSound, 1.0f);
         }
         if (other.gameObject.CompareTag("Snowflake"))
         {
