@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        restartButton = GetComponent<Button>();
-        startButton = GetComponent<Button>();
+        //restartButton = GetComponent<Button>();
+       // startButton = GetComponent<Button>();
     }
 
     // Update is called once per frame
@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        isGameActive = false;
         restartButton.gameObject.SetActive(true);
+        isGameActive = false;
     }
 
     public void StartGame()
