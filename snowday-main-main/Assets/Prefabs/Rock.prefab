@@ -4904,6 +4904,7 @@ MonoBehaviour:
   speed: 15
   pointValue: 5
   ExtraLife: 0
+  explosionFx: {fileID: 7701850997032864387, guid: b1a32874eb0295d4fb79747dd2faba3f, type: 3}
 --- !u!65 &-7256765642890687572
 BoxCollider:
   m_ObjectHideFlags: 0

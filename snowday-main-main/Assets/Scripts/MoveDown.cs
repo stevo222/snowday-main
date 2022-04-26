@@ -10,6 +10,7 @@ public class MoveDown : MonoBehaviour
     private GameManager gameManager;
     public int pointValue;
     public int ExtraLife;
+    public GameObject explosionFx;
    // public PlayerController playerControllerScript;
 
 
@@ -35,6 +36,7 @@ public class MoveDown : MonoBehaviour
         {
             Destroy(gameObject);
             
+            
         }
        // else
        // {
@@ -45,11 +47,17 @@ public class MoveDown : MonoBehaviour
     private void OnTriggerEnter (Collider other)
     {
         Destroy(gameObject);
+        Explode();
         gameManager.UpdateScore(pointValue);
         //Destroy(other.gameObject);
        
        
     }
 
-  
+    void Explode()
+    {
+        Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
+    }
+
+
 }

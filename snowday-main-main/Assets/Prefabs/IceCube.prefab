@@ -113,6 +113,7 @@ MonoBehaviour:
   speed: 5
   pointValue: 0
   ExtraLife: 1
+  explosionFx: {fileID: 9204167279410567744, guid: 4a3e331baca816d4baba3112d7363241, type: 3}
 --- !u!54 &5938585005653584429
 Rigidbody:
   m_ObjectHideFlags: 0
