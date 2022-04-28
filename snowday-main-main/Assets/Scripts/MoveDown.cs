@@ -51,8 +51,9 @@ public class MoveDown : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        Destroy(gameObject);
         Explode();
+        Destroy(gameObject);
+        
         gameManager.UpdateScore(pointValue);
         
         //Destroy(other.gameObject);

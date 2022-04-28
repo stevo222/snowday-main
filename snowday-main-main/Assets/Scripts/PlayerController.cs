@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             Damage();
             playerAudio.PlayOneShot(explodeSound, 1.0f);
+            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Snowflake"))
         {
@@ -110,11 +111,11 @@ public class PlayerController : MonoBehaviour
     public void Damage()
     {
         _lives--;
+        gameManager.UpdateLives(-1);
         if (_lives < 1)
         {
-            Destroy(this.gameObject);
             gameManager.GameOver();
-           
+            Destroy(this.gameObject);    
         }
        
     }

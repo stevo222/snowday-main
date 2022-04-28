@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //restartButton = GetComponent<Button>();
-       // startButton = GetComponent<Button>();
+        // startButton = GetComponent<Button>();
+        StartGame();
     }
 
     // Update is called once per frame
@@ -38,12 +39,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //public void UpdateLives (int showlives)
-    // {
-    //lives + showlives;
-    //livesText.text = "Lives: " + lives;
+    public void UpdateLives (int showlives)
+     {
+    lives += showlives;
+    livesText.text = "Lives: " + lives;
 
-    //}
+    }
 
     public void RestartGame()
     {
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         lives = 4;
         titlescreen.gameObject.SetActive(false);
-        //UpdateLives(4);
+        UpdateLives(0);
     }
 
 }
